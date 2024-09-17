@@ -1,4 +1,4 @@
-import ButtonTest from "./components/ButtonTest";
+import TagsContainer from "./components/TagsContainer";
 
 import GlobalStyles from "./styles/globalStyles";
 
@@ -7,7 +7,7 @@ function App() {
     <>
       <GlobalStyles />
 
-      <ButtonTest />
+      <TagsContainer />
     </>
   );
 }

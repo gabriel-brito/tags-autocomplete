@@ -1,6 +1,10 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
+    * {
+        box-sizing: border-box;
+    }
+
     html, body {
         align-items: center;
         box-sizing: border-box;
@@ -22,6 +26,7 @@ const GlobalStyles = createGlobalStyle`
             sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+        background: linear-gradient(229deg, rgba(0,36,107,1) 45%, rgba(202,220,252,1) 100%);
     }
   `;
 
