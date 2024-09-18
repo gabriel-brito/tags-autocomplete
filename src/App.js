@@ -1,6 +1,6 @@
-import TagsContainer from "./components/TagsContainer";
+import TagsContainer from "components/TagsContainer";
 
-import GlobalStyles from "./styles/globalStyles";
+import GlobalStyles from "styles/globalStyles";
 
 function App() {
   return (

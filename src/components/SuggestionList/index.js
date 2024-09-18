@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 
-import data from "../../mocks/suggestions";
+import data from "mocks/suggestions";
 
 import * as S from "./styles";
 

@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 
-import TagButton from "../TagButton";
-import SuggestionList from "../SuggestionList";
+import TagButton from "components/TagButton";
+import SuggestionList from "components/SuggestionList";
 
 import * as S from "./styles";
 
