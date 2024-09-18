@@ -3,8 +3,6 @@ import { useState, useRef } from "react";
 import TagButton from "../TagButton";
 import SuggestionList from "../SuggestionList";
 
-import { deepClone } from "../../utils/arrays";
-
 import * as S from "./styles";
 
 export default function TagsContainer() {
@@ -20,31 +18,37 @@ export default function TagsContainer() {
 
   const handleDelete = (tag) => {
     const tagValue = tag.toLowerCase();
-    const newTags = deepClone(tags).filter(
+    const newTags = [...tags].filter(
       (storedTag) => storedTag.toLowerCase() !== tagValue
     );
 
     setTags(newTags);
   };
 
+  const handleAdd = (value) => {
+    if (!value) return;
+
+    const alreadyTagged = tags.some(
+      (tag) => tag.toLowerCase() === value.toLowerCase()
+    );
+
+    if (alreadyTagged) return;
+
+    const newTags = [...tags];
+
+    newTags.push(value);
+
+    setTags(newTags);
+    setInputValue("");
+
+    setFocus();
+  };
+
   const handleUserEvent = (event) => {
     if (!inputValue) return;
 
     if (event.key === "Enter") {
-      const alreadyTagged = tags.some(
-        (tag) => tag.toLowerCase() === inputValue.toLowerCase()
-      );
-
-      if (alreadyTagged) return;
-
-      const newTags = deepClone(tags);
-
-      newTags.push(inputValue);
-
-      setTags(newTags);
-      setInputValue("");
-
-      setFocus();
+      handleAdd(inputValue);
     }
   };
 
@@ -73,7 +77,13 @@ export default function TagsContainer() {
         />
       </S.Wrapper>
 
-      <SuggestionList inputValue={inputValue} />
+      {inputValue && (
+        <SuggestionList
+          inputValue={inputValue}
+          tags={tags}
+          handleAdd={handleAdd}
+        />
+      )}
     </S.Container>
   );
 }
